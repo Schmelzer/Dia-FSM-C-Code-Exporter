@@ -1,5 +1,5 @@
 # Dia C Code exporter
-State Machine Exporter for Dia Diagrams.
+State Machine Exporter for [http://dia-installer.de/download/index.html](Dia Diagrams).
 
 # Instruction
 Place `fsm_c_code_export.py`  with the work of [http://www.sourcepole.ch/assets/2012/6/5/uml_stm_export.py](Unai Estébanez Sevilla) in your home directory `~/.dia/python/`.
