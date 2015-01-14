@@ -1,13 +1,15 @@
 # Export dia finite state machines into C state machines
 # Based on the work of Tomas Pospisek <tpo_deb@sourcepole.ch>
-# and 
+# http://www.sourcepole.ch/generating-state-machines-with-dia
+# and Unai Estébanez Sevilla
 # ----------------------------------------------------------------------------
 # "THE BEER-WARE LICENSE" (Revision 42):
 # <ulf.schmlzr@schmlzr.de> wrote this file. As long as you retain this notice you
 # can do whatever you want with this stuff. If we meet some day, and you think
 # this stuff is worth it, you can buy me a beer in return Ulf Schmelzer
 # ----------------------------------------------------------------------------
-
+# Note: This code was created under the purpose to pass a labority in my studies
+#       and it's not beauty. Sorry :()
 
 
 import dia
@@ -193,9 +195,6 @@ class CDiagramRenderer(uml_stm_export.SimpleSTM):
                             first = 1
                         else:
                             f.write("\telse if( %s ){\n" % transition.trigger)
-                            #f.write("\t\t//here we could place a guard condition          ")
-                            f.write("\t\t//here we could prepare for a transition activity\n")
-                            f.write("\t\t//transitionActivity = f0;\n")
                         
                         #write if for guards
                         f.write("\t\t//guard condition\n")
@@ -225,7 +224,7 @@ class CDiagramRenderer(uml_stm_export.SimpleSTM):
                 f.write("\t//Here we execute the transition activities, if any\n")                
                 f.write("\tif (getCurrent%sState() != getLast%sState()) {\n" % (stateMachineName,stateMachineName))
                 f.write("\t\t%s //onExit activity\n" % state.oaction)
-                
+                # todo: implement transition activitys
                 # f.write("\t    switch (transitionActivity%s) {\n" % stateMachineName)
                 # f.write("\t    case f0:\n")
                 # f.write("\t        break;\n")
@@ -267,4 +266,4 @@ class CDiagramRenderer(uml_stm_export.SimpleSTM):
         self.transitions = []
 
 # dia-python keeps a reference to the renderer class and uses it on demand
-dia.register_export("State Machine C-Code and Headerfile", "c and h", CDiagramRenderer())
+dia.register_export("State Machine C-Code and Headerfile", "c and *.h", CDiagramRenderer())

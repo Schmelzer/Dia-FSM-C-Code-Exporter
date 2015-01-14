@@ -1,2 +1,2 @@
-# Dia-FSM-Parser
-State Machien Parser for Dia Diagrams
+# Dia C Code exporter
+State Machine Exporter for Dia Diagrams.
